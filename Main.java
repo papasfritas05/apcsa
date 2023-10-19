@@ -1,15 +1,14 @@
 public class Main {
     public static void main(String[] args) {
         try {
-        intVector test = new intVector(-1000);
+            IntVector test = new IntVector(-1000);
 
-        System.out.println("Size: " + test.size());
+            System.out.println("Size: " + test.size());
 
-        for(int i = 0; i < test.size(); i++) {
+            for(int i = 0; i < test.size(); i++) {
 
-            
             }
-          catch(IllegalArgumentException ex) {
+        } catch(IllegalArgumentException ex) {
             System.out.println("thatsnIlligal");
         }
           catch(ArithmeticException ex) {
@@ -17,8 +16,6 @@ public class Main {
         }
           catch(Exception ex) {
             System.out.println("Generic Exception");
-        }
-        
         }
     }
 }
