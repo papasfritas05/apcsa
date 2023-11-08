@@ -1,8 +1,11 @@
 package LinearStructures;
 
+import java.lang.Iterable;
+import java.util.Iterator;
+
 
 // this is a "generic" class
-public class ArrayList<E> implements {
+public class ArrayList<E> implements Iterable<E> {
     // what is protected?
     // protected is... public in the package, private outside the package
     protected static final int INITIAL_CAPACITY = 10;
