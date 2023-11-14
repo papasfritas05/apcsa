@@ -1,4 +1,4 @@
-import LinearStructures.IntVector;
+import java.util.LinkedList;
 import LinearStructures.ArrayList;
 
 public class Main {
