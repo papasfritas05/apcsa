@@ -1,5 +1,6 @@
 package LinearStructures;
 
+import java.util.Iterator;
 
 public class LinkedList <E> {
     private int size = 0;
@@ -134,7 +135,7 @@ public class LinkedList <E> {
     private static class Node<E> {
         public static Object current;
         E element;
-        Node next;
+        Node<E> next;
 
         public Node(E element) {
             this.element = element;
@@ -143,27 +144,86 @@ public class LinkedList <E> {
 
     public E remove(int index) {
         checkIndex(index);
+        Node<E> current = head;
+        Node<E> tail = head;
         if(index ==0){
-            size--;
-            Node.current= head;
-            
+            return removeFirst();
+        }
+        if(index == index-1){
+            return removeLast();
         }
         for(int i = 0; i < index - 1; i++){
-            Node<E> current;
+            current = current.next;
             
         }
+        Node<E> removed= current.next;
+        current.next = current.next.next;
+        return removed.element;
     }
 
-    public E getIndex() {
+    public E get(int Index) {
+        checkIndex(Index);
+        if(Index == 0){
+            return getFirst();
+        }
+        else if(Index == Index- 1){
+            return getLast();
+        }else{
+              Node<E> current = head;
+        
+        for(int i = 0; i < Index - 1; i++) {
+            current = current.next;
+        }
+        return current.element;
+    }
+    }
+
+    public int lastIndexOf(E e) {
+        if(size == 0) return -1;
+        int index = 0;
+        int currIndex = -1;
+        Node<E> current = head;
+        do {
+            if(current.element == e) {
+                currIndex = index;
+            }
+            current = current.next;
+            index++;
+        } while (current != null);
+        
+        return currIndex;
+    }
+
+    public E set(int Index, E e) {
+        checkIndex(Index);
+        Node<E> current = head;
+        
+        for(int i = 0; i < Index - 1; i++) {
+            current = current.next;
+        }
+        Node<E> removed = current;
+        current.element = e;
+        return removed.element;
 
     }
 
-    public E LastIndexOf() {
-
+    public Iterator<E> iterator() {
+        return new LinkedListIterator();
     }
 
-    public E setIndex() {
+    private class LinkedListIterator implements Iterator<E> {
+        private int current = 0;
 
+        public boolean hasNext() {
+            return (current < size);
+        }
+        
+        public E next() {
+            return data[current++];
+        }
+
+        public void remove() {
+            ArrayList.this.remove(current);
+        }
     }
-    
 }
