@@ -212,18 +212,24 @@ public class LinkedList <E> {
     }
 
     private class LinkedListIterator implements Iterator<E> {
-        private int current = 0;
+        private Node<E> current = head;
+        private int num = 0;
 
         public boolean hasNext() {
-            return (current < size);
+            return (num < size);
         }
         
         public E next() {
-            return data[current++];
+            if(hasNext()){
+                Node<E> og = current;
+                current = current.next;
+                return og.element;
+            }
+            return null;
         }
 
         public void remove() {
-            ArrayList.this.remove(current);
+            LinkedList.this.remove(num);
         }
     }
 }
