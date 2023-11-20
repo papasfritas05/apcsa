@@ -133,7 +133,6 @@ public class LinkedList <E> {
     }
 
     private static class Node<E> {
-        public static Object current;
         E element;
         Node<E> next;
 
